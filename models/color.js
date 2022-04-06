@@ -1,21 +1,21 @@
 const  { Schema, model } = require('mongoose');
 
-const TallaSchema = Schema({
+const ColorSchema = Schema({
     cod_ta: {
         type: String,
         required: true
     },
     talla: {
-        type: int,
+        type: String,
         required: true
     },
 });
 
-ClienteSchema.method('toJSON', function() {
+ColorSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.uid = _id;
     return object;
 
 });
 
-module.exports = model('Talla', TallaSchema);
+module.exports = model('Color', ColorSchema);
