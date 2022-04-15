@@ -87,6 +87,8 @@ const login = async (req, res = response) => {
 }
 
 const renewToken = async (req, res = response) => {
+
+  // Recuperar el uid de la request
   const uid= req.uid;
 
   // Generar JWT
