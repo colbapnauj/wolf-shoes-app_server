@@ -27,8 +27,9 @@ app.use( express.static( publicPath ) );
 
 // Mis Rutas
 app.use( '/api/login', require('./routes/auth') );
-app.use( '/api/register', require('./routes/cliente') );
-app.use( '/api/data', require('./routes/data') );
+app.use( '/api/register', require('./routes/register_data'));
+app.use( '/api/delete', require('./routes/delete_data'));
+app.use( '/api/data', require('./routes/obtener_data') );
 
 
 
