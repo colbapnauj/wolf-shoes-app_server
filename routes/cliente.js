@@ -4,8 +4,9 @@
 
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { crearCliente } = require('../controllers/cliente');
+const { crearCliente } = require('../controllers/clientes');
 const { validarCampos } = require('../middlewares/validar-campos');
+const { validarJWT } = require('../middlewares/validar-jwt');
 
 const router = Router();
 
@@ -18,7 +19,9 @@ router.post('/cliente', [
     check('telefono', 'El telefono es obligatorio').not().isEmpty(),
     check('telefono', 'Nro de telefono incorrecto').isLength({ min: 9, max: 9 }),
     check('direccion', 'La direccion es obligatoria').not().isEmpty(),
-    validarCampos
+    validarCampos, validarJWT
 ], crearCliente);
+
+
 
 module.exports = router;

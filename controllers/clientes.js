@@ -31,6 +31,23 @@ const crearCliente = async (req, res = response) => {
   }
 };
 
+const getClientes = async (req, res = response) => {
+
+  const desde = Number(req.query.desde) || 0;
+  
+
+  const clientes = await Cliente.find();
+    // .find({ _id: {$ne: req.uid} })
+    // .sort('-fecha')
+    // .skip(desde)
+    // .limit(20);
+
+  res.json({
+    ok: true,
+    clientes
+  });
+}
+
 module.exports = {
-    crearCliente
+    crearCliente, getClientes
 }
