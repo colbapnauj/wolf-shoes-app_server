@@ -21,7 +21,8 @@ require('./sockets/socket');
 
 
 // Path público
-const publicPath = path.resolve( __dirname, 'public' );
+// const publicPath = path.resolve( __dirname, 'public' );
+const publicPath = path.resolve( __dirname, 'web' );
 app.use( express.static( publicPath ) );
 
 
