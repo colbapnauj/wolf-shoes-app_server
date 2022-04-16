@@ -1,11 +1,7 @@
 const  { Schema, model } = require('mongoose');
 
 const TallaSchema = Schema({
-    cod_talla: {
-        type: String,
-        required: true
-    },
-    talla: {
+    nro_talla: {
         type: String,
         required: true
     },

@@ -34,12 +34,14 @@ const deleteTalla = async (req, res = response) => {
 
 const deleteColor = async (req, res = response) => {
 
-    const { cod_color } = req.body;
+    const { _id } = req.body;
+  
   
     try {
-      const existeCodColor = await Color.findOne({ cod_color });
+      const existeCodColor = await Color.findOne({ _id });
+      console.log(existeCodColor);
       if (existeCodColor) {
-        await Color.findOneAndDelete({ cod_color });
+        await Color.findOneAndDelete({ _id });
         res.json({
           ok: true,
           msg: 'Color eliminado'
@@ -61,14 +63,15 @@ const deleteColor = async (req, res = response) => {
 
   const deleteZapato = async (req, res = response) => {
 
-    const { cod_zapato } = req.body;
+    const { _id } = req.body;
+    console.log(_id);
   
     try {
-      const existeCodZapato = await Zapato.findOne({ cod_zapato });
-      const existeModeloEnAlmacen = await Producto.findOne({ cod_zapato });
+      const existeCodZapato = await Zapato.findOne({ _id });
+      const existeModeloEnAlmacen = await Producto.findOne({ cod_modelo: _id });
         if (!existeModeloEnAlmacen){
             if (existeCodZapato) {
-                await Zapato.findOneAndDelete({ cod_zapato });
+                await Zapato.findOneAndDelete({ _id });
                 res.json({
                 ok: true,
                 msg: 'Zapato eliminado'

@@ -5,7 +5,7 @@
 const { Router } = require('express');
 
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { getClientes, getTallas, getColores, getZapatos, getProductos } = require('../controllers/register_data');
+const { getClientes, getTallas, getColores, getZapatos, getProductos } = require('../controllers/obtener_data');
 
 
 

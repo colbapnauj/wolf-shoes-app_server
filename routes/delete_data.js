@@ -13,17 +13,17 @@ const { deleteTalla, deleteColor, deleteZapato } = require('../controllers/delet
 const router = Router();
 
 router.delete('/talla', [
-    check('cod_talla', 'El codigo de talla es obligatorio').not().isEmpty(),
+    check('_id', 'El codigo de talla es obligatorio').not().isEmpty(),
     validarCampos, validarJWT
 ], deleteTalla);
 
 router.delete('/color', [
-    check('cod_color', 'El codigo de color es obligatorio').not().isEmpty(),
+    check('_id', 'El código de color es obligatorio').not().isEmpty(),
     validarCampos, validarJWT
 ], deleteColor);
 
 router.delete('/zapato', [
-    check('cod_zapato', 'El codigo de zapato es obligatorio').not().isEmpty(),
+    check('_id', 'El codigo de zapato es obligatorio').not().isEmpty(),
     validarCampos, validarJWT
 ], deleteZapato);
     

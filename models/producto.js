@@ -1,15 +1,15 @@
 const  { Schema, model } = require('mongoose');
 
 const ProductoSchema = Schema({
-    cod_producto: {
+    id_modelo: {
         type: String,
         required: true
     },
-    cod_talla: { 
+    id_talla: { 
         type: String,
         require: true
     },
-    cod_color: {
+    id_color: {
         type: String,
         require: true
     },
@@ -30,4 +30,4 @@ ProductoSchema.method('toJSON', function() {
 
 });
 
-module.exports = model('Almacen', ProductoSchema);
+module.exports = model('Producto', ProductoSchema);

@@ -23,27 +23,24 @@ router.post('/cliente', [
 ], crearCliente);
 
 router.post('/talla', [
-    check('cod_talla', 'El codigo de talla es obligatorio').not().isEmpty(),
-    check('talla', 'La talla es obligatoria').not().isEmpty(),
+    check('nro_talla', 'La talla es obligatoria').not().isEmpty(),
     validarCampos, validarJWT
 ], crearTalla);
 
 router.post('/color', [
-    check('cod_color', 'El codigo de color es obligatorio').not().isEmpty(),
     check('name_color', 'El color es obligatorio').not().isEmpty(),
     validarCampos, validarJWT
 ], crearColor);
 
 router.post('/zapato', [
-    check('cod_zapato', 'El codigo de zapato es obligatorio').not().isEmpty(),
-    check('modelo', 'El nombre del modelo del zapato es obligatorio').not().isEmpty(),
+    check('nombre_modelo', 'El nombre del modelo del zapato es obligatorio').not().isEmpty(),
     validarCampos, validarJWT
 ], crearZapato);
 
 router.post('/producto', [
-    check('cod_producto', 'El codigo de producto es obligatorio').not().isEmpty(),
-    check('cod_talla', 'El codigo de talla es obligatorio').not().isEmpty(),
-    check('cod_color', 'El codigo de color es obligatorio').not().isEmpty(),
+    check('id_modelo', 'El id de modelo del zapato es obligatorio').not().isEmpty(),
+    check('id_color', 'El id de color del zapato es obligatorio').not().isEmpty(),
+    check('id_talla', 'La talla del zapato es obligatoria').not().isEmpty(),
     /// Cantidad creo que no debería registrar aquí, porque se debería de hacer ingresos y salidas de los productos
     // TODO validar que la cantidad sea un numero
     check('cantidad', 'La cantidad es obligatoria').not().isEmpty(),

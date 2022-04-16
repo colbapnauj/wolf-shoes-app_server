@@ -35,32 +35,17 @@ const crearCliente = async (req, res = response) => {
   }
 };
 
-const getClientes = async (req, res = response) => {
 
-  const desde = Number(req.query.desde) || 0;
-  
-
-  const clientes = await Cliente.find();
-    // .find({ _id: {$ne: req.uid} })
-    // .sort('-fecha')
-    // .skip(desde)
-    // .limit(20);
-
-  res.json({
-    ok: true,
-    clientes
-  });
-}
 
 const crearTalla = async (req, res = response) => {
-  const { cod_talla } = req.body;
+  const { nro_talla } = req.body;
 
   try {
-    const existeCodTalla = await Talla.findOne({ cod_talla });
-    if (existeCodTalla) {
+    const existeTalla = await Talla.findOne({ nro_talla });
+    if (existeTalla) {
       return res.status(400).json({
         ok: false,
-        msg: "Código de talla ya registrado",
+        msg: "Talla ya registrada",
       });
     }
 
@@ -81,26 +66,16 @@ const crearTalla = async (req, res = response) => {
   }
 };
 
-const getTallas = async (req, res = response) => {
 
-  const tallas = await Talla.find()
-    .sort('talla');
-
-  res.json({
-    ok: true,
-    tallas
-  });
-}
 
 const crearColor = async (req, res = response) => {
-  const { cod_color, name_color } = req.body;
+  const { name_color } = req.body;
   
 
   try {
-    const existeCodTalla = await Color.findOne({ cod_color });
     const existeColor = await Color.findOne({ name_color });
 
-    if (existeCodTalla || existeColor) {
+    if (existeColor) {
       return res.status(400).json({
         ok: false,
         msg: "Código o nombre de color ya registrado",
@@ -124,27 +99,19 @@ const crearColor = async (req, res = response) => {
   }
 };
 
-const getColores = async (req, res = response) => {
 
-  const colors = await Color.find();
-
-  res.json({
-    ok: true,
-    colors
-  });
-}
 
 const crearZapato = async (req, res = response) => {
-  const { cod_zapato } = req.body;
+  const { nombre_modelo } = req.body;
   
 
   try {
-    const existeCodZapato = await Zapato.findOne({ cod_zapato });
+    const existeNombreZapato = await Zapato.findOne({ nombre_modelo });
 
-    if (existeCodZapato) {
+    if (existeNombreZapato) {
       return res.status(400).json({
         ok: false,
-        msg: "Código de zapato ya registrado",
+        msg: "Nombre de modelo ya registrado",
       });
     }
 
@@ -165,27 +132,17 @@ const crearZapato = async (req, res = response) => {
   }
 };
 
-const getZapatos = async (req, res = response) => {
-
-  const zapatos = await Zapato.find();
-
-  res.json({
-    ok: true,
-    zapatos
-  });
-}
-
 const crearProducto = async (req, res = response) => {
-  const { cod_producto } = req.body;
+  const { id_modelo } = req.body;
   
 
   try {
-    const existeCodProduct = await Producto.findOne({ cod_producto });
+    const existeIdModel = await Zapato.findOne({ _id: id_modelo });
 
-    if (existeCodProduct) {
+    if (!existeIdModel) {
       return res.status(400).json({
         ok: false,
-        msg: "Código de producto ya registrado",
+        msg: "Modelo no registrado",
       });
     }
 
@@ -206,25 +163,10 @@ const crearProducto = async (req, res = response) => {
   }
 };
 
-const getProductos = async (req, res = response) => {
-
-  const producto = await Producto.find();
-
-  res.json({
-    ok: true,
-    producto
-  });
-}
-
 module.exports = {
     crearCliente, 
-    getClientes, 
     crearTalla, 
-    getTallas, 
     crearColor, 
-    getColores, 
     crearZapato, 
-    getZapatos, 
     crearProducto, 
-    getProductos
 }

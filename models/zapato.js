@@ -1,11 +1,7 @@
 const  { Schema, model } = require('mongoose');
 
 const ZapatoSchema = Schema({
-    cod_zapato: {
-        type: String,
-        required: true
-    },
-    modelo: {
+    nombre_modelo: {
         type: String,
         required: true
     },
